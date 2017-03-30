@@ -38,7 +38,7 @@ body, html {
 
 }
 
-#search-box {
+#s {
     width: 100%;
     padding: 5px;
     text-align: center;
@@ -49,7 +49,7 @@ body, html {
     border-bottom: 1px solid #20243B;
 }
 
-#search-box:focus {
+#s:focus {
     outline: none;
 }
 

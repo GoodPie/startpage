@@ -1,11 +1,24 @@
+/**
+ * Handles search functionality
+ */
+
 const SHIFT = 16;
 const RETURN = 13;
+
+setTimeout(function(){
+    document.getElementById("s").focus();
+}, 0);
 
 var keyCombination = {
     "return":false,
     "shift":false
 };
 
+/**
+ * Check what key combinations have been pressed
+ *
+ * @param e
+ */
 document.onkeydown = function(e)
 {
     e  = e || window.event;
@@ -23,7 +36,11 @@ document.onkeydown = function(e)
 
 };
 
-// On key up resets the status of the key combination
+/**
+ * Reset the key combinations
+ *
+ * @param e
+ */
 document.onkeyup = function(e)
 {
     e = e || window.event;
@@ -40,10 +57,14 @@ document.onkeyup = function(e)
     }
 };
 
+
+/**
+ * Searches search engines based on key combinations
+ */
 var search = function()
 {
     // Get the search query
-    var query = document.getElementById("search-box").value;
+    var query = document.getElementById("s").value;
 
     // Make sure query isn't empty to avoid accidental presses
     if (query !== "") {
