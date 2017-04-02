@@ -66,6 +66,7 @@ var search = function()
     // Get the search query
     var query = document.getElementById("s").value;
 
+
     // Make sure query isn't empty to avoid accidental presses
     if (query !== "") {
         var url = "https://www.google.com.au/#q=" + query;
@@ -74,6 +75,17 @@ var search = function()
         if (keyCombination["shift"] === true) {
             url = "https://duckduckgo.com/?q=" + query;
         }
+
+		// Reddit Flag
+		if (query.substring(0,2) === "r/")
+		{
+			url = "https://reddit.com/" + query;
+		} else if (query.substring(0,2) == "l/") {
+			query = query.substr(2); // Remove tag
+			query = query.replace(" ", "-"); // Mobafire uses dashes
+			query = query + "-guide"; 
+			url = "http://www.mobafire.com/league-of-legends/" + query;
+		}
 
         // Open the search engine url
         window.open(url, "_self");
