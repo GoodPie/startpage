@@ -57,3 +57,13 @@ body, html {
 {
     color: #3E4259;
 }
+
+#weather-container
+{
+    color: #3E4259;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    bottom: 3%;
+
+}
