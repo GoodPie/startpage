@@ -6,6 +6,8 @@ var TEMP_MAX = "temp_max";
 var TEMP = "temp";
 var WEATHER = "weather";
 var DESCRIPTION = "description";
+var HUMIDITY = "humidity";
+var CLOUDS = "clouds"
 
 /**
  * Makes a http request to a specific url and then calls
@@ -33,8 +35,8 @@ var parseWeatherData = function(data)
     console.log(weatherData);
 
     // Get the max and min temps
-    var max = weatherData[MAIN][TEMP_MAX];
-    var min = weatherData[MAIN][TEMP_MIN];
+    var humidity = weatherData[MAIN][HUMIDITY];
+    var clouds = weatherData[CLOUDS]["all"];
     var current = weatherData[MAIN][TEMP];
 
     // Get conditions
@@ -42,7 +44,7 @@ var parseWeatherData = function(data)
 
     // Construct weather message
     var weatherMessage = "[cond]: " + condition;
-    weatherMessage += "<br/>[curr]: " + current + " [min]: " + min + " [max]: " + max;
+    weatherMessage += "<br/>[curr]: " + current + " [hum]: " + humidity + " [clouds]: " + clouds;
     document.getElementById("weather-container").innerHTML = weatherMessage; 
 }
 
