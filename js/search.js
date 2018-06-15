@@ -8,7 +8,7 @@ var RETURN = 13;
 var urls = {
     reddit: "https://reddit.com/",
     league: "https://www.mobafire.com/league-of-legends/",
-    google: "https://google.com.au/q#=",
+    google: "https://google.com.au/search?q=",
     duck: "https://duckduckgo.com/?q="
 };
 
@@ -83,7 +83,8 @@ var search = function()
         if (keyCombination["shift"] === true) {
             url = urls.duck + query;
         }
-        else {
+        else
+        {
             // Using search flags
             var search_flag = get_search_tag(query);
             switch (search_flag) {
