@@ -2,7 +2,7 @@
  *  Updates the time display
  */
 
-const INTERVAL = 5000; // 5s
+var INTERVAL = 5000; // 5s
 
 var setTime = function()
 {

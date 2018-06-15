@@ -2,11 +2,19 @@
  * Handles search functionality
  */
 
-const SHIFT = 16;
-const RETURN = 13;
+var SHIFT = 16;
+var RETURN = 13;
+
+var urls = {
+    reddit: "https://reddit.com/",
+    league: "https://www.mobafire.com/league-of-legends/",
+    google: "https://google.com.au/q#=",
+    duck: "https://duckduckgo.com/?q="
+};
+
 
 setTimeout(function(){
-    document.getElementById("s").focus();
+    document.getElementById("search").focus();
 }, 0);
 
 var keyCombination = {
@@ -64,30 +72,60 @@ document.onkeyup = function(e)
 var search = function()
 {
     // Get the search query
-    var query = document.getElementById("s").value;
+    var query = document.getElementById("search").value;
 
-
-    // Make sure query isn't empty to avoid accidental presses
     if (query !== "") {
-        var url = "https://www.google.com.au/#q=" + query;
 
-        // Depending on the key combinations search google or duck duck go
+        // Default the query to google
+        var url = urls.google + query;
+
+        // Shift for Duck Duck Go
         if (keyCombination["shift"] === true) {
-            url = "https://duckduckgo.com/?q=" + query;
+            url = urls.duck + query;
         }
-
-		// Reddit Flag
-		if (query.substring(0,2) === "r/")
-		{
-			url = "https://reddit.com/" + query;
-		} else if (query.substring(0,2) == "l/") {
-			query = query.substr(2); // Remove tag
-			query = query.replace(" ", "-"); // Mobafire uses dashes
-			query = query + "-guide"; 
-			url = "http://www.mobafire.com/league-of-legends/" + query;
-		}
+        else {
+            // Using search flags
+            var search_flag = get_search_tag(query);
+            switch (search_flag) {
+                case "r/":
+                    url = urls.reddit + query;
+                    break;
+                case "l/":
+                    url = build_mobafire_query(query);
+                    break;
+            }
+        }
 
         // Open the search engine url
         window.open(url, "_self");
     }
 };
+
+/**
+ * Just a stub function in case I want to expand on the tags later
+ * @param query
+ * @returns {string}
+ */
+var get_search_tag = function (query) {
+    return query.substr(0, 2);
+};
+
+
+/**
+ * Mobafire query can't just be appended to url. Have to do a few things to make it work
+ * @param query     Raw query from user with the search tag
+ * @returns {*}     Query url
+ */
+var build_mobafire_query = function (query) {
+    // Remove the query tag
+    query = query.substr(2);
+
+    // Replace spaces with dashes
+    query = query.replace(" ", "-");
+
+    // Append guide to end of query
+    query = query + "-guide";
+
+    return urls.league + query;
+};
+

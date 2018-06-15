@@ -15,55 +15,53 @@ body, html {
 }
 
 #main-container {
-    width: 98%;
-    height: 96%;
-    margin: auto;
-    border: 5px solid #20212C;
     display: flex;
     justify-content: center;
-    align-content: center;
     align-items: center;
     flex-direction: column;
+    width: 100%;
+    min-width: 100vh;
 }
 
 #time-container {
-    font-size: 3.5em;
+
+    font-size: 4em;
     font-weight: bold;
-    color: #3E4259;
 }
 
 #search-container {
-    margin: 20px;
     width: 30%;
-
+    margin: 15px;
 }
 
-#s {
+#search-container input {
+    padding: 15px;
     width: 100%;
-    padding: 5px;
     text-align: center;
-    font-size: 1.2em;
-    color: whitesmoke;
-    background: #18181B;
+    font-size: 2em;
+    background: #272728;
     border: none;
-    border-bottom: 1px solid #20243B;
+    color: #535353;
 }
 
-#s:focus {
-    outline: none;
+#links-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 20%;
+    text-transform: lowercase;
 }
 
-.links-container a:visited, .links-container a
-{
-    color: #3E4259;
+#links-container a {
+    color: #535353;
+    padding: 5px;
 }
 
-#weather-container
-{
-    color: #3E4259;
-    text-align: center;
-    font-weight: bold;
-    position: absolute;
-    bottom: 3%;
-
+#links-container a:hover {
+    color: #6C5A22;
+    -webkit-transition: color 0.1s;
+    -moz-transition: color 0.2s;
+    -ms-transition: color 0.2s;
+    -o-transition: color 0.2s;
+    transition: color 0.2s;
 }
